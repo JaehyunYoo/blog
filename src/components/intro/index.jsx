@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import Image from 'gatsby-image'
 import ReactRotatingText from 'react-rotating-text'
 import '../../styles/main.scss';
 
@@ -8,7 +9,7 @@ export const MainIntro = forwardRef((props, ref) => {
     query={etcQuery}
     render={data => {
       const { author, social, introduction,roll } = data.site.siteMetadata
-      console.log(roll);
+      console.log(data.avatar.childImageSharp.fixed);
       return (
         <div ref={ref} className="introduction">
           <p className='title'>
@@ -19,8 +20,12 @@ export const MainIntro = forwardRef((props, ref) => {
             개발자 <strong>{author}</strong> 입니다.
           </p>
           <div style={{flex:'1',textAlign:'center'}}>
-            <img src='/images/mainProfile.png' />
-          </div>
+          <Image
+            fixed={data.avatar.childImageSharp.fixed}
+            alt={author}
+            style={{borderRadius: `100%`}}
+   />
+          </div> 
         </div>
       )
     }}
@@ -29,6 +34,13 @@ export const MainIntro = forwardRef((props, ref) => {
 
 const etcQuery = graphql`
   query EtcQuery {
+    avatar: file(absolutePath: { regex: "/mainProfile.png/" }) {
+      childImageSharp {
+        fixed(width: 300, height: 300) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     site {
       siteMetadata {
         author
@@ -39,4 +51,4 @@ const etcQuery = graphql`
   }
 `
 
-// export default Bio
+

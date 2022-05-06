@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { Top } from '../components/top'
-import { Header } from '../components/header'
 import { ThemeSwitch } from '../components/theme-switch'
 import { Footer } from '../components/footer'
 import { rhythm } from '../utils/typography'
@@ -11,7 +9,7 @@ import { MainIntro } from '../components/intro'
 
 export const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
-  const test = ['착실한개발자','창의적인 개발자','기대대되는 개발자'];
+  const isRoot = location.pathname === rootPath
   return (
     <React.Fragment>
       <Top title={title} location={location} rootPath={rootPath} />
@@ -24,9 +22,9 @@ export const Layout = ({ location, title, children }) => {
         }}
       >
         <ThemeSwitch />
-        <MainIntro />
-
-        {/* <Header title={title} location={location} rootPath={rootPath} /> */}
+        {
+          isRoot && <MainIntro />
+        }
         {children}
         <Footer />
       </div>

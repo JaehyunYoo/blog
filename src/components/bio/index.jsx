@@ -8,7 +8,7 @@ export const Bio = forwardRef((props, ref) => {
   return <StaticQuery
     query={bioQuery}
     render={data => {
-      const { author, social, introduction,roll } = data.site.siteMetadata
+      const { author, social, introduction } = data.site.siteMetadata
       return (
         <div ref={ref} className="bio">
           <div className="author">
@@ -65,8 +65,8 @@ export const Bio = forwardRef((props, ref) => {
 })
 
 const bioQuery = graphql`
-  query Test {
-    avatar: file(absolutePath: { regex: "/profile.png/" }) {
+  query BioQuery {
+    avatar: file(absolutePath: { regex: "/mainProfile.png/" }) {
       childImageSharp {
         fixed(width: 72, height: 72) {
           ...GatsbyImageSharpFixed
