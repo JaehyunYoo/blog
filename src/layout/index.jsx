@@ -5,12 +5,13 @@ import { Header } from '../components/header'
 import { ThemeSwitch } from '../components/theme-switch'
 import { Footer } from '../components/footer'
 import { rhythm } from '../utils/typography'
-
 import './index.scss'
+import { MainIntro } from '../components/intro'
+
 
 export const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
-
+  const test = ['착실한개발자','창의적인 개발자','기대대되는 개발자'];
   return (
     <React.Fragment>
       <Top title={title} location={location} rootPath={rootPath} />
@@ -23,7 +24,9 @@ export const Layout = ({ location, title, children }) => {
         }}
       >
         <ThemeSwitch />
-        <Header title={title} location={location} rootPath={rootPath} />
+        <MainIntro />
+
+        {/* <Header title={title} location={location} rootPath={rootPath} /> */}
         {children}
         <Footer />
       </div>

@@ -2,13 +2,15 @@
 
 .thumbnail {
   display: block;
+  margin-top:12px;
   margin-bottom: 12px;
-  padding: 4px;
+  padding: 12px;
   padding-bottom: 12px;
   box-shadow: none;
   transition: text-shadow 0.3s, opacity 0.4s;
   opacity: 0;
-
+  border:1px solid rgb(232, 232, 232);
+  border-radius: 10px;
   p {
     font-size: 90%;
     line-height: 1.4;
@@ -17,4 +19,56 @@
 
 .thumbnail.visible {
   opacity: 1;
+}
+.item_style{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.date{
+  color:rgb(233, 92, 165);
+  animation: flutter 2s infinite linear;
+  font-weight: bolder;
+}
+
+@-webkit-keyframes flutter {
+  0% {
+    transform: rotate(0deg);
+  }
+  35% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  65% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes flutter {
+  0% {
+    transform: rotate(0deg);
+  }
+  35% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  65% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }

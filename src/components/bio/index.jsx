@@ -8,8 +8,7 @@ export const Bio = forwardRef((props, ref) => {
   return <StaticQuery
     query={bioQuery}
     render={data => {
-      const { author, social, introduction } = data.site.siteMetadata
-
+      const { author, social, introduction,roll } = data.site.siteMetadata
       return (
         <div ref={ref} className="bio">
           <div className="author">
@@ -23,7 +22,7 @@ export const Bio = forwardRef((props, ref) => {
                 }}
               />
               <div className="author-name">
-                <span className="author-name-prefix">Written by</span>
+                {/* <span className="author-name-prefix">Written by</span> */}
                 <Link to={'/about'} className="author-name-content">
                   <span>@{author}</span>
                 </Link>
@@ -66,7 +65,7 @@ export const Bio = forwardRef((props, ref) => {
 })
 
 const bioQuery = graphql`
-  query BioQuery {
+  query Test {
     avatar: file(absolutePath: { regex: "/profile.png/" }) {
       childImageSharp {
         fixed(width: 72, height: 72) {
@@ -78,6 +77,7 @@ const bioQuery = graphql`
       siteMetadata {
         author
         introduction
+        roll
         social {
           twitter
           github
